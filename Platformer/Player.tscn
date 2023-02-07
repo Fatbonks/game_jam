@@ -1,0 +1,281 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://dash.wav" type="AudioStream" id=1]
+[ext_resource path="res://PlayerController.gd" type="Script" id=2]
+[ext_resource path="res://jump.wav" type="AudioStream" id=3]
+[ext_resource path="res://key.png" type="Texture" id=4]
+[ext_resource path="res://pickupCoin (1).wav" type="AudioStream" id=5]
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/1bitcharacter.png-5ebffb39eff0a2185748a95a0c57d25e.stex"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 5 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Dash"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.6, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Jump"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.6 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.1, 1.1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Run"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 3, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "idle"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "Dash"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "Run"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachine" id=43]
+states/Dash/node = SubResource( 27 )
+states/Dash/position = Vector2( 304, 54 )
+states/Jump/node = SubResource( 28 )
+states/Jump/position = Vector2( 304, 177 )
+states/Run/node = SubResource( 29 )
+states/Run/position = Vector2( 141, 177 )
+states/idle/node = SubResource( 30 )
+states/idle/position = Vector2( 141, 54 )
+transitions = [ "idle", "Dash", SubResource( 31 ), "Dash", "idle", SubResource( 32 ), "Run", "idle", SubResource( 33 ), "idle", "Run", SubResource( 34 ), "Run", "Jump", SubResource( 35 ), "Jump", "Run", SubResource( 36 ), "Jump", "Dash", SubResource( 37 ), "Dash", "Jump", SubResource( 38 ), "Jump", "idle", SubResource( 39 ), "idle", "Jump", SubResource( 40 ), "Dash", "Run", SubResource( 41 ), "Run", "Dash", SubResource( 42 ) ]
+start_node = "idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=44]
+
+[sub_resource type="DynamicFontData" id=45]
+antialiased = false
+font_path = "res://8-bit-hud.ttf"
+
+[sub_resource type="DynamicFont" id=46]
+size = 5
+outline_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+font_data = SubResource( 45 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 40, 22 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1.07497, 1.07497 )
+texture = SubResource( 2 )
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/Dash = SubResource( 3 )
+anims/Jump = SubResource( 4 )
+anims/RESET = SubResource( 26 )
+anims/Run = SubResource( 6 )
+anims/idle = SubResource( 7 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 43 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 44 )
+
+[node name="dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -20.0
+
+[node name="pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -20.0
+
+[node name="jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -30.0
+
+[node name="Coins" type="Control" parent="."]
+margin_left = -118.0
+margin_top = -78.0
+margin_right = 118.0
+margin_bottom = 78.0
+
+[node name="Label" type="Label" parent="Coins"]
+margin_right = 18.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 46 )
+text = "0 / 7"
+
+[node name="death_count" type="Label" parent="Coins"]
+margin_top = 25.0
+margin_right = 25.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 46 )
+text = "Death: 0"
+
+[node name="key" type="Sprite" parent="."]
+visible = false
+position = Vector2( -112, -62 )
+texture = ExtResource( 4 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

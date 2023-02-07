@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/8Bit Title Screen.mp3-ef9b9527c4f94896e4998b4f600c6186.mp3str"
+
+[deps]
+
+source_file="res://8Bit Title Screen.mp3"
+dest_files=[ "res://.import/8Bit Title Screen.mp3-ef9b9527c4f94896e4998b4f600c6186.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
