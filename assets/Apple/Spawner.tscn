@@ -1,22 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://assets/Apple/Spawner.gd" type="Script" id=1]
-[ext_resource path="res://assets/Player/icon.png" type="Texture" id=2]
 
 [node name="Spawner" type="Node2D"]
+position = Vector2( 291, 308 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-spawn_limit = 10
+spawn_limit = 50
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="spawn_apple" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.3
 autostart = true
 
 [node name="cooldown" type="Timer" parent="."]

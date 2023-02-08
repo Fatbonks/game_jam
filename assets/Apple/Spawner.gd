@@ -15,7 +15,7 @@ func _process(_delta):
 
 func spawn_apple():
 	randomize()
-	apple_location.x = rand_range(0, 512)
+	apple_location.x = rand_range(global_position.y, 256)
 	var scene = apple.instance()
 	scene.position = apple_location
 	add_child(scene)
@@ -30,5 +30,5 @@ func _on_Timer_timeout():
 
 func _on_cooldown_timeout():
 	limit = 0
-	spawn_limit += 10
+	spawn_limit += spawn_limit * 1.3
 	cooldown_has_started = false
