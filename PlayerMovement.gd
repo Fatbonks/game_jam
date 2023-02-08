@@ -16,13 +16,12 @@ func _physics_process(delta):
 		direction.x += 1
 	if Input.is_action_pressed("move_left"):
 		direction.x -= 1
-	if Input.is_action_pressed("move_up"): # Negative numbers go up
-		direction.y -= 1
-	if Input.is_action_pressed("move_down"):
-		direction.y += 1
+	if Input.is_action_just_pressed("move_up"): # Negative numbers go up
+		direction.y -= 2
 	
 	velocity.x = direction.x * speed
-	velocity.y = direction.y * speed
+	velocity.y += direction.y * speed
+	velocity.y += 4
 	velocity = move_and_slide(velocity, Vector2.LEFT)
 
 
